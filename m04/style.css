@@ -1,0 +1,88 @@
+
+* {
+    font-family: Arial, Verdana, sans-serif;
+    color: #665544;
+    text-align: center;
+}
+
+body {
+    width: 90%;
+    margin: 0 auto;
+    background-image: url("Assets/Finance.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#nav {
+    background-color: #333;
+    padding: 0.5em 0;
+}
+
+#nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#nav ul li {
+    display: inline;
+    padding: 0.5em;
+}
+
+#nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#content {
+    overflow: auto;
+}
+
+#feature {
+    background-color: #8CC63E;
+    background-image: url("Assets/NYSE.jpg");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.column1 {
+    background-color: #FFCC00;
+    width: 31.3%;
+    float: left;
+    margin: 1%;
+    padding: 15px;
+}
+
+.column2 {
+    background-color: #FF6600;
+    width: 31.3%;
+    float: left;
+    margin: 1%;
+    padding: 15px;
+}
+
+.column3 {
+    background-color: #1e00ff;
+    width: 31.3%;
+    float: left;
+    margin: 1%;
+    margin-right: 0%;
+    padding: 15px;
+}
+
+#footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+.logo {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2rem;
+    text-align: center;
+}
