@@ -80,8 +80,6 @@ body {
     background-color: #C9878E;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
-
 footer {
     background-color: #15f301;
     color: white;
@@ -94,7 +92,7 @@ footer {
 }
 
 .logo {
-    font-family: 'Roboto Slab', serif;
-    font-size: 2rem;
-    text-align: center;
+    font-family: 'NemoyBold';
+    font-weight: bold;
+    font-style: normal;
 }
