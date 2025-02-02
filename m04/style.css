@@ -17,6 +17,8 @@ body {
 #nav {
     background-color: #A34A92;
     padding: 1em;
+    width: 100%;
+    text-align: center;
 }
 
 #nav ul {
@@ -25,7 +27,8 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    gap: 20px; 
+    align-items: center;
+    gap: 30px;
 }
 
 #nav ul li {
@@ -37,6 +40,8 @@ body {
     color: white;
     font-weight: bold;
     padding: 10px 15px;
+    font-size: 1.2rem;
+    display: inline-block;
 }
 
 
