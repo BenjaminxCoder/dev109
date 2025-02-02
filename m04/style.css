@@ -51,7 +51,7 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     padding: 20px;
-    margin-top: 30px; /* Adds space between nav and feature */
+    margin-top: 30px;
 }
 
 #content {
@@ -91,8 +91,16 @@ footer {
     font-weight: bold;
 }
 
-.logo {
-    font-family: 'NemoyBold';
+@font-face {
+    font-family: "NemoyBold";
+    src: url("Assets/NemoyBold.otf") format("opentype");
     font-weight: bold;
     font-style: normal;
+}
+
+.logo {
+    font-family: "NemoyBold";
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ff4d00;
 }
