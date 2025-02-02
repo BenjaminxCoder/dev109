@@ -44,11 +44,6 @@ body {
     display: inline-block;
 }
 
-
-#content {
-    overflow: auto;
-}
-
 #feature {
     background-color: #8CC63E;
     background-image: url("Assets/NYSE.jpg");
@@ -56,41 +51,47 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     padding: 20px;
+    margin-top: 30px; /* Adds space between nav and feature */
 }
 
-.column1 {
-    background-color: #FFCC00;
-    width: 31.3%;
-    float: left;
-    margin: 1%;
+#content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.column {
+    flex: 1;
     padding: 15px;
-}
-
-.column2 {
-    background-color: #FF6600;
-    width: 31.3%;
-    float: left;
-    margin: 1%;
-    padding: 15px;
-}
-
-.column3 {
-    background-color: #1e00ff;
-    width: 31.3%;
-    float: left;
-    margin: 1%;
-    margin-right: 0%;
-    padding: 15px;
-}
-
-#footer {
-    background-color: #222;
-    color: white;
     text-align: center;
-    padding: 10px;
+    min-height: 200px;
+}
+
+#col1 {
+    background-color: #EFA0B2;
+}
+
+#col2 {
+    background-color: #8B0A22;
+}
+
+#col3 {
+    background-color: #C9878E;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+footer {
+    background-color: #15f301;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    font-weight: bold;
+}
 
 .logo {
     font-family: 'Roboto Slab', serif;
