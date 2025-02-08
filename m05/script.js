@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
     });
     
-    
+    setInterval(() => {
+        gifContainer.style.animation = "none";
+        void gifContainer.offsetWidth; 
+        gifContainer.style.animation = "move-across 30s linear infinite";
+    }, 300000);
+
     function loadTasks() {
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         tasks.forEach(task => addTask(task.text, task.completed));
