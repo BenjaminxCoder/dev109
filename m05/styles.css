@@ -6,6 +6,8 @@ body {
     align-items: center;
     height: 100vh;
     transition: background 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 body.dark-mode {
@@ -111,4 +113,39 @@ li {
 .completed {
     text-decoration: line-through;
     color: gray;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+#gif-container {
+    position: fixed;
+    bottom: 10px;
+    left: -50px;
+    width: 50px;
+    height: 50px;
+    animation: move-across 30s linear infinite;
+}
+
+#gif-container img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes move-across {
+    0% {
+        right: -50px;
+    }
+    100% {
+        right: 100vw;
+    }
 }
