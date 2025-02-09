@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadTasks() {
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        tasks.forEach(task => addTask(task.text, task.completed));
+        tasks.forEach(task => addTask(task.text, task.completed, true));
     }
     
     loadTasks();
