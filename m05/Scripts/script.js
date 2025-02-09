@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const todoForm = document.getElementById("todo-form");
     const taskInput = document.getElementById("task-input");
     const taskList = document.getElementById("task-list");
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300000);
 
     function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         tasks.forEach(task => addTask(task.text, task.completed));
     }
     
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function addTask(text, completed = false) {
         const li = document.createElement("li");
         li.innerHTML = `
-            <span>${text}</span>
+            <span>${text.trim()}</span>
             <div>
                 <button class="complete-btn">✔</button>
                 <button class="delete-btn">✖</button>
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (completed) {
             li.classList.add("completed");
             completedList.appendChild(li);
+            li.querySelector(".complete-btn").remove();
         } else {
             taskList.appendChild(li);
         }
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskItem = event.target.closest("li");
             taskItem.classList.add("completed");
             completedList.appendChild(taskItem);
+            taskItem.querySelector(".complete-btn").remove();
             saveTasks();
         }
         
@@ -71,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function saveTasks() {
         const tasks = [];
         document.querySelectorAll("#task-list li").forEach(li => {
-            tasks.push({ text: li.textContent.trim(), completed: false });
+            tasks.push({ text: li.querySelector("span").textContent.trim(), completed: false });
         });
         document.querySelectorAll("#completed-list li").forEach(li => {
-            tasks.push({ text: li.textContent.trim(), completed: true });
+            tasks.push({ text: li.querySelector("span").textContent.trim(), completed: true });
         });
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
