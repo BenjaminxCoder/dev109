@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const todoForm = document.getElementById("todo-form");
     const taskInput = document.getElementById("task-input");
     const taskList = document.getElementById("task-list");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function addTask(text, completed = false) {
         const li = document.createElement("li");
         li.innerHTML = `
-            <span>${textContent}</span>
+            <span>${text.trim()}</span>
             <div>
                 <button class="complete-btn">✔</button>
                 <button class="delete-btn">✖</button>
