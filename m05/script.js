@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadTasks() {
          const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        taskList.innerHTML = "";
-        completedList.innerHTML = "";
-        tasks.forEach(task => addTask(task.text, task.completed, true));
+        tasks.forEach(task => addTask(task.text, task.completed));
     }
     
     loadTasks();
@@ -74,10 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function saveTasks() {
         const tasks = [];
         document.querySelectorAll("#task-list li").forEach(li => {
-            tasks.push({ text: li.textContent.trim(), completed: false });
+            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, -2), completed: false });
         });
         document.querySelectorAll("#completed-list li").forEach(li => {
-            tasks.push({ text: li.textContent.trim(), completed: true });
+            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, -2), completed: true });
         });
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
