@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskItem = event.target.closest("li");
             taskItem.classList.add("completed");
             completedList.appendChild(taskItem);
+            taskItem.querySelector(".complete-btn").remove();
             saveTasks();
         }
         
