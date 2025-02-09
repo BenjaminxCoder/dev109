@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function addTask(text, completed = false) {
         const li = document.createElement("li");
         li.innerHTML = `
-            <span>${text}</span>
+            <span>${textContent}</span>
             <div>
                 <button class="complete-btn">✔</button>
                 <button class="delete-btn">✖</button>
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (completed) {
             li.classList.add("completed");
             completedList.appendChild(li);
-            taskItem.querySelector(".complete-btn").remove();
+            li.querySelector(".complete-btn").remove();
         } else {
             taskList.appendChild(li);
         }
@@ -73,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function saveTasks() {
         const tasks = [];
         document.querySelectorAll("#task-list li").forEach(li => {
-            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, textContent.length()-2), completed: false });
+            tasks.push({ text: li.querySelector("span").textContent.trim(), completed: false });
         });
         document.querySelectorAll("#completed-list li").forEach(li => {
-            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, textContent.length()-1), completed: true });
+            tasks.push({ text: li.querySelector("span").textContent.trim(), completed: true });
         });
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
