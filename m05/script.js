@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (completed) {
             li.classList.add("completed");
             completedList.appendChild(li);
+            taskItem.querySelector(".complete-btn").remove();
         } else {
             taskList.appendChild(li);
         }
@@ -72,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function saveTasks() {
         const tasks = [];
         document.querySelectorAll("#task-list li").forEach(li => {
-            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, -2), completed: false });
+            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, textContent.length()-2), completed: false });
         });
         document.querySelectorAll("#completed-list li").forEach(li => {
-            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, -2), completed: true });
+            tasks.push({ text: li.querySelector("span").textContent.trim().slice(0, textContent.length()-1), completed: true });
         });
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
