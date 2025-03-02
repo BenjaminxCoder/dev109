@@ -1,38 +1,147 @@
-function isValid() {
-    if (firstName() //&&
-       // lastName()
-    )
-    return true;
-    else
+/*
+Form Validation Script
+This script validates user inputs in a form before submission.
+*/
+function isValid(event) {
+    event.preventDefault(); 
+    let valid = true;
+    document.getElementById("submiterror").innerHTML = "";
+    // Call each validation function
+    valid &= firstName();
+    valid &= lastName();
+    valid &= email();
+    valid &= phone();
+    valid &= username();
+    valid &= password();
+    valid &= address();
+    valid &= city();
+    valid &= state();
+    valid &= country();
+    valid &= zipcode();
+    
+    // Display error message if any validation fails
+    if (!valid) {
         document.getElementById("submiterror").innerHTML = "<p><strong>Error Submitting — See Above</strong></p>";
-        event.preventDefault();
         return false;
+    }
+    return true;
 }
 
-FirstName.addEventListener('blur', firstName, false);
-function firstName(){
-    //1) Create variable
-    var validFirstname=false;
+// Attach event listeners to form elements to validate on change
+// Runs validation when the user moves away from a field
+document.getElementById("myform").addEventListener("submit", isValid);
 
-    //2) read value from HTML
-    var firstname = document.getElementById("FirstName").value;
-    var errorMessages = "";
+document.getElementById("FirstName").addEventListener("blur", firstName);
+document.getElementById("LastName").addEventListener("blur", lastName);
+document.getElementById("email").addEventListener("blur", email);
+document.getElementById("phone").addEventListener("blur", phone);
+document.getElementById("username").addEventListener("blur", username);
+document.getElementById("password").addEventListener("blur", password);
+document.getElementById("address").addEventListener("blur", address);
+document.getElementById("city").addEventListener("blur", city);
+document.getElementById("state").addEventListener("blur", state);
+document.getElementById("country").addEventListener("change", country);
+document.getElementById("zipcode").addEventListener("blur", zipcode);
+/* 
+Validate First Name
+Validate Last Name
+Validate Email
+Validate Phone
+Validate Username
+Validate Password
+Validate Country
+Validate Zipcode
+*/
+function firstName() {
+    let firstname = document.getElementById("FirstName").value;
+    let errorDiv = document.getElementById("fname");
+    errorDiv.innerHTML = "";
+    
+    if (!firstname || firstname.length > 20 || !/^[a-zA-Z]+$/.test(firstname)) {
+        errorDiv.innerHTML = "<p class='error'>First name is required and must be only letters, max 20 chars</p>";
+        return false;
+    }
+    return true;
+}
 
-    //3) Do validation
-    if (firstname==="null" || firstname==="" || firstname.length > 20 ) {
-        errorMessages += "<p>The first name is required and cannot be greater than 20 characters</p>";
-        console.log("First name invalid — length")
-        } else if (firstname.match("^[a-zA-Z ,.'-]+$")===null) {
-            errorMessages += "<p>Invalid caracter in last name (accepts only A-Z, a-z, and ,.'-)</p>";
-            console.log("First name invalid — bad characters")
-        } else {
-                validFirstname = true;
-                console.log("First name valid")
-        };
+function lastName() {
+    let lastname = document.getElementById("LastName").value;
+    let errorDiv = document.getElementById("lname");
+    errorDiv.innerHTML = "";
+    
+    if (!lastname || lastname.length > 20 || !/^[a-zA-Z]+$/.test(lastname)) {
+        errorDiv.innerHTML = "<p class='error'>Last name is required and must be only letters, max 20 chars</p>";
+        return false;
+    }
+    return true;
+}
 
-    //4) Send error message to HTML
-    document.getElementById("fname").innerHTML = errorMessages;
+function email() {
+    let email = document.getElementById("email").value;
+    let errorDiv = document.getElementById("emailerror");
+    errorDiv.innerHTML = "";
+    
+    if (!email.match(/^\S+@\S+\.\S+$/)) {
+        errorDiv.innerHTML = "<p class='error'>Invalid email format</p>";
+        return false;
+    }
+    return true;
+}
 
-    //5) return status of each field
-    return (validFirstname);
-};
+function phone() {
+    let phone = document.getElementById("phone").value;
+    let errorDiv = document.getElementById("phoneerror");
+    errorDiv.innerHTML = "";
+    
+    if (!/^[0-9-]{10,15}$/.test(phone)) {
+        errorDiv.innerHTML = "<p class='error'>Invalid phone number (only numbers and dashes, max 15 chars)</p>";
+        return false;
+    }
+    return true;
+}
+
+function username() {
+    let username = document.getElementById("username").value;
+    let errorDiv = document.getElementById("usernameerror");
+    errorDiv.innerHTML = "";
+    
+    if (!username || username.length > 12) {
+        errorDiv.innerHTML = "<p class='error'>Username is required, max 12 characters</p>";
+        return false;
+    }
+    return true;
+}
+
+function password() {
+    let password = document.getElementById("password").value;
+    let errorDiv = document.getElementById("passworderror");
+    errorDiv.innerHTML = "";
+    
+    if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/)) {
+        errorDiv.innerHTML = "<p class='error'>Password must be 7 chars long, include 1 uppercase, 1 lowercase, 1 number, 1 special character</p>";
+        return false;
+    }
+    return true;
+}
+
+function country() {
+    let country = document.getElementById("country").value;
+    if (country === "USA") {
+        document.getElementById("zipcode").disabled = false;
+    } else {
+        document.getElementById("zipcode").disabled = true;
+    }
+    return true;
+}
+
+function zipcode() {
+    let zipcode = document.getElementById("zipcode").value;
+    let errorDiv = document.getElementById("ziperror");
+    errorDiv.innerHTML = "";
+    
+    if (document.getElementById("country").value === "USA" && !/^[0-9]{5}$/.test(zipcode)) {
+        errorDiv.innerHTML = "<p class='error'>Zip code must be 5 digits</p>";
+        return false;
+    }
+    return true;
+}
