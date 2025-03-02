@@ -24,7 +24,7 @@ function isValid(event) {
         document.getElementById("submiterror").innerHTML = "<p><strong>Error Submitting — See Above</strong></p>";
         return false;
     }
-    document.getElementById("myform").submit();
+    setTimeout(() => document.getElementById("myform").submit(), 10);
     return true;
 }
 
