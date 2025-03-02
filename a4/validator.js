@@ -30,7 +30,11 @@ function isValid(event) {
 
 // Attach event listeners to form elements to validate on change
 // Runs validation when the user moves away from a field
-document.getElementById("myform").addEventListener("submit", isValid);
+document.getElementById("myform").addEventListener("submit", function(event) {
+    if (!isValid(event)) {
+        event.preventDefault();
+    }
+});
 
 document.getElementById("FirstName").addEventListener("blur", firstName);
 document.getElementById("LastName").addEventListener("blur", lastName);
@@ -43,6 +47,7 @@ document.getElementById("city").addEventListener("blur", city);
 document.getElementById("state").addEventListener("blur", state);
 document.getElementById("country").addEventListener("change", country);
 document.getElementById("zipcode").addEventListener("blur", zipcode);
+
 /* 
 Validate First Name
 Validate Last Name
