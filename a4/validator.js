@@ -50,6 +50,7 @@ Validate Email
 Validate Phone
 Validate Username
 Validate Password
+Validate Address
 Validate Country
 Validate Zipcode
 */
@@ -120,6 +121,18 @@ function password() {
     
     if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/)) {
         errorDiv.innerHTML = "<p class='error'>Password must be 7 chars long, include 1 uppercase, 1 lowercase, 1 number, 1 special character</p>";
+        return false;
+    }
+    return true;
+}
+
+function address() {
+    let address = document.getElementById("address").value;
+    let errorDiv = document.getElementById("addresserror");
+    errorDiv.innerHTML = "";
+    
+    if (!address || address.length < 5 || address.length > 100) {
+        errorDiv.innerHTML = "<p class='error'>Address is required (5-100 characters)</p>";
         return false;
     }
     return true;
