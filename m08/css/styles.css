@@ -1,0 +1,80 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 350px;
+    margin: 50px auto;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styling */
+.logo {
+    width: 80px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Heading */
+h1 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* Grocery List */
+#grocery-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#grocery-list li {
+    background-color: #d95b66;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Input and Button */
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #666;
+}

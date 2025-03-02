@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="./images/kinglogo.png" alt="ListKing" class="logo">
 
+        <h1>BUY GROCERIES</h1>
+        <ul id="grocery-list">
+            <li><em>fresh</em> figs</li>
+            <li>pine nuts</li>
+            <li>honey</li>
+            <li>balsamic vinegar</li>
+            <li>salt</li>
+            <li>pepper</li>
+        </ul>
+        <div class="input-container">
+            <input type="text" id="new-item" placeholder="Enter grocery item">
+            <button onclick="addItem()">Add new grocery item</button>
+        </div>
+    </div>
+
+    <script src="./js/add_element.js"></script>
+</body>
+</html>
