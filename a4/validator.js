@@ -6,6 +6,7 @@ function isValid(event) {
     event.preventDefault(); 
     let valid = true;
     document.getElementById("submiterror").innerHTML = "";
+    
     // Call each validation function
     valid &= firstName();
     valid &= lastName();
@@ -21,10 +22,10 @@ function isValid(event) {
     
     // Display error message if any validation fails
     if (!valid) {
+        event.preventDefault();
         document.getElementById("submiterror").innerHTML = "<p><strong>Error Submitting — See Above</strong></p>";
         return false;
-    }
-    setTimeout(() => document.getElementById("myform").submit(), 10);
+    }  
     return true;
 }
 
