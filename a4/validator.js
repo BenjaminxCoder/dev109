@@ -3,10 +3,9 @@ Form Validation Script
 This script validates user inputs in a form before submission.
 */
 function isValid(event) {
-    event.preventDefault(); 
     let valid = true;
     document.getElementById("submiterror").innerHTML = "";
-    
+
     // Call each validation function
     valid &= firstName();
     valid &= lastName();
@@ -19,18 +18,19 @@ function isValid(event) {
     valid &= state();
     valid &= country();
     valid &= zipcode();
-    
-    // Display error message if any validation fails
+
+    // If validation fails, prevent form submission
     if (!valid) {
         event.preventDefault();
         document.getElementById("submiterror").innerHTML = "<p><strong>Error Submitting — See Above</strong></p>";
         return false;
-    }  
+    }
+
+    // If validation passes, allow normal form submission
     return true;
 }
 
-// Attach event listeners to form elements to validate on change
-// Runs validation when the user moves away from a field
+// Attach event listener to form submission
 document.getElementById("myform").addEventListener("submit", function(event) {
     if (!isValid(event)) {
         event.preventDefault();
