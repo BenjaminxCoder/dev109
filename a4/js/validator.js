@@ -7,17 +7,17 @@ function isValid(event) {
     document.getElementById("submiterror").innerHTML = "";
 
     // Call each validation function
-    valid &= firstName();
-    valid &= lastName();
-    valid &= email();
-    valid &= phone();
-    valid &= username();
-    valid &= password();
-    valid &= address();
-    valid &= city();
-    valid &= state();
-    valid &= country();
-    valid &= zipcode();
+    valid = firstName() &&= valid;
+    valid = lastName() &&= valid;
+    valid = email() &&= valid;
+    valid = phone() &&= valid;
+    valid = username() &&= valid;
+    valid = password() &&= valid;
+    valid = address() &&= valid;
+    valid = city() &&= valid;
+    valid = state() &&= valid;
+    valid = country() &&= valid;
+    valid = zipcode() &&= valid;
 
     // If validation fails, prevent form submission
     if (!valid) {
@@ -26,11 +26,12 @@ function isValid(event) {
         return false;
     }
 
-    // If validation passes, allow normal form submission
+    // Manually trigger form submission only when valid
+    setTimeout(() => document.getElementById("myform").submit(), 10);
     return true;
 }
 
-// Attach event listener to form submission
+// Attach event listener to prevent form submission only if validation fails
 document.getElementById("myform").addEventListener("submit", function(event) {
     if (!isValid(event)) {
         event.preventDefault();
