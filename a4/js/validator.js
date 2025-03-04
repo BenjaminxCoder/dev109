@@ -6,18 +6,18 @@ function isValid(event) {
     let valid = true;
     document.getElementById("submiterror").innerHTML = "";
 
-    // Call each validation function
-    valid = firstName() &&= valid;
-    valid = lastName() &&= valid;
-    valid = email() &&= valid;
-    valid = phone() &&= valid;
-    valid = username() &&= valid;
-    valid = password() &&= valid;
-    valid = address() &&= valid;
-    valid = city() &&= valid;
-    valid = state() &&= valid;
-    valid = country() &&= valid;
-    valid = zipcode() &&= valid;
+    // Validate all fields correctly
+    valid = firstName() && valid;
+    valid = lastName() && valid;
+    valid = email() && valid;
+    valid = phone() && valid;
+    valid = username() && valid;
+    valid = password() && valid;
+    valid = address() && valid;
+    valid = city() && valid;
+    valid = state() && valid;
+    valid = country() && valid;
+    valid = zipcode() && valid;
 
     // If validation fails, prevent form submission
     if (!valid) {
@@ -26,15 +26,15 @@ function isValid(event) {
         return false;
     }
 
-    // Manually trigger form submission only when valid
-    setTimeout(() => document.getElementById("myform").submit(), 10);
+    // Fix: Allow normal form submission by ensuring event.preventDefault() isn't blocking it
+    event.target.submit();
     return true;
 }
 
-// Attach event listener to prevent form submission only if validation fails
+// Ensure form submission works as expected
 document.getElementById("myform").addEventListener("submit", function(event) {
     if (!isValid(event)) {
-        event.preventDefault();
+        event.preventDefault(); // Blocks only if validation fails
     }
 });
 
@@ -142,6 +142,32 @@ function address() {
         errorDiv.innerHTML = "<p class='error'>Address is required (5-100 characters)</p>";
         return false;
     }
+    return true;
+}
+
+function city() {
+    let city = document.getElementById("city").value;
+    let errorDiv = document.getElementById("cityerror");
+    errorDiv.innerHTML = "";
+
+    // Ensure city is not empty and contains only letters and spaces
+    if (!city || city.length < 2 || city.length > 50 || !/^[a-zA-Z\s]+$/.test(city)) {
+        errorDiv.innerHTML = "<p class='error'>City is required and must be only letters (2-50 chars).</p>";
+        return false;
+    }
+    return true;
+}
+
+function state() {
+    let state = document.getElementById("state").value;
+    let errorDiv = document.getElementById("stateerror");
+    errorDiv.innerHTML = "";
+
+    if (!state) {
+        errorDiv.innerHTML = "<p class='error'>Please select a state</p>";
+        return false;
+    }
+
     return true;
 }
 
