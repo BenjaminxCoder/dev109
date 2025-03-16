@@ -1,0 +1,81 @@
+body {
+    background-color: #3e3ebd;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  area {
+    cursor: pointer;
+  }
+
+
+  h1 {
+    font-family: 'Courier New', monospace;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+
+  ul {
+    list-style: none;
+    padding: 0;
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  li {
+    margin: 5px 0;
+    transition: 0.3s ease;
+  }
+  
+
+  li.found {
+    text-decoration: line-through;
+    color: #ccc;
+  }
+  
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 5px solid white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  #level2-img {
+    width: 1200px; /* or whatever width you used to define coords */
+    max-width: none;
+  }
+
+/* Level switch button */
+button {
+  background-color: #ffffff;
+  color: #3e3ebd;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddddff;
+}

@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Spy Game</title>
+  <link rel="stylesheet" href="./CSS/styles.css">
+</head>
+<body>
+  <h1>I Spy Game</h1>
+  <p id="instructions">See if you can find the following objects on the picture. Once you find them, click on them!</p>
 
+  <ul id="itemList">
+    <li id="bike">Bike</li>
+    <li id="lion">Lion</li>
+    <li id="globe">Globe</li>
+    <li id="umbrella">Umbrella</li>
+    <li id="frog">Frog</li>
+  </ul>
+
+  <div class="image-container">
+    <img src="./Assets/ISPY.jpg" usemap="#objectmap" alt="I Spy Picture">
+    <map name="objectmap">
+        <area shape="rect" coords="712,19,797,94" alt="Bike" id="area-bike">
+        <area shape="rect" coords="530,230,552,256" alt="Lion" id="area-lion">
+        <area shape="rect" coords="224,432,308,486" alt="Globe" id="area-globe">
+        <area shape="rect" coords="127,560,150,712" alt="Umbrella" id="area-umbrella">
+        <area shape="rect" coords="196,671,310,807" alt="Frog" id="area-frog">
+    </map>
+    
+    <img src="./Assets/Waldo.jpeg" usemap="#objectmap2" alt="Level 2 I Spy" id="level2-img" style="display:none;">
+    <map name="objectmap2">
+      <area shape="rect" coords="2539,1322,2570,1353" alt="Waldo" id="area-waldo">
+    </map>
+  </div>
+
+  <button onclick="switchLevel()">Go to Level 2</button>
+
+  <script src="./JS/script.js"></script>
+</body>
+</html>
