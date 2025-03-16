@@ -19,7 +19,7 @@ function initializeLevel(level) {
   totalItems.forEach(name => {
     const area = document.getElementById(`area-${name}`);
     if (area) {
-      area.onclick = null; // Remove old listener
+      area.onclick = null;
       area.onclick = () => foundItem(name);
     }
   });

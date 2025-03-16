@@ -59,11 +59,10 @@ body {
   }
 
   #level2-img {
-    width: 1200px; /* or whatever width you used to define coords */
+    width: 1200px;
     max-width: none;
   }
 
-/* Level switch button */
 button {
   background-color: #ffffff;
   color: #3e3ebd;
