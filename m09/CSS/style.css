@@ -1,0 +1,12 @@
+body {
+    height: 100vh;
+    background: beige;
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+  
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+  }
