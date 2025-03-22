@@ -6,7 +6,12 @@ body {
   background: #121212;
   color: #f0f0f0;
 }
-  
+
+#autoAdvance {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
 .carousel {
   margin-top: 50px;
 }

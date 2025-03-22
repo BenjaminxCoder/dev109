@@ -1,57 +1,93 @@
+ // Redoing slideshow images and captions
 const images = [
-    { src: './Assets/img1.jpg', alt: 'Luxury Cartier storefront with classic red car', desc: 'A luxurious Cartier boutique framed by warm interior lights, while a classic red sports car completes the opulent scene on the upscale street.' },
-    { src: './Assets/img2.jpg', alt: 'Luxury yacht in the open water', desc: 'A pristine white yacht floats serenely in deep turquoise waters, a symbol of freedom, wealth, and elite leisure.' },
-    { src: './Assets/img3.jpg', alt: 'Modern luxury bathroom with ocean view', desc: 'A man in a robe enjoys a serene morning in a modern oceanfront villa, where the bath and view embody relaxation and refined living.' },
-    { src: './Assets/img4.jpg', alt: 'Stylish men posing with luxury SUV', desc: 'Two sharply dressed gentlemen pose with confidence beside a high-end Mercedes G-Wagon, exuding modern luxury and success.' },
-    { src: './Assets/img5.jpg', alt: 'Superyacht docked at marina', desc: 'A glamorous superyacht illuminated with ambient lights, docked among elite vessels, a floating palace for the ultra-wealthy.' },
-  ];
-  
-  let currentIndex = 0;
-  let timerValue = 4;
-  let interval;
-  
-  const imgElement = document.getElementById('carouselImage');
-  const descElement = document.getElementById('imageDescription');
-  const timerDisplay = document.getElementById('timer');
-  
-  function showImage(index) {
-    const image = images[index];
-    imgElement.src = image.src;
-    imgElement.alt = image.alt;
-    descElement.textContent = image.desc;
-    resetInterval();
+  "./Assets/img1.jpg",
+  "./Assets/img2.jpg",
+  "./Assets/img3.jpg",
+  "./Assets/img4.jpg",
+  "./Assets/img5.jpg"
+];
+
+const captions = [
+  "A luxurious Cartier boutique framed by warm interior lights, while a classic red sports car completes the opulent scene on the upscale street.",
+  "A pristine white yacht floats serenely in deep turquoise waters, a symbol of freedom, wealth, and elite leisure.",
+  "A man in a robe enjoys a serene morning in a modern oceanfront villa, where the bath and view embody relaxation and refined living.",
+  "Two sharply dressed gentlemen pose with confidence beside a high-end Mercedes G-Wagon, exuding modern luxury and success.",
+  "A glamorous superyacht illuminated with ambient lights, docked among elite vessels, a floating palace for the ultra-wealthy."
+];
+
+let currentIndex = 0;
+let autoAdvanceInterval;
+
+// DOM elements
+const slideshow = document.getElementById('carouselImage');
+const caption = document.getElementById('caption');
+const prevButton = document.getElementById('prevBtn');
+const nextButton = document.getElementById('nextBtn');
+const autoCheckbox = document.getElementById('autoAdvance');
+const timerDisplay = document.getElementById('timer');
+
+// Update displayed image and caption
+function updateSlide() {
+  slideshow.src = images[currentIndex];
+  slideshow.alt = captions[currentIndex];
+  captions.textContent = captions[currentIndex];
+}
+
+// Navigate slides
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateSlide();
+  resetAutoAdvance();
+}
+
+function previousSlide() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateSlide();
+  resetAutoAdvance();
+}
+
+// Event listeners for buttons
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', previousSlide);
+
+// Auto-advance logic
+function startAutoAdvance() {
+  stopAutoAdvance(); 
+  autoAdvanceInterval = setInterval(() => {
+      nextSlide();
+  }, 4000); 
+}
+
+function stopAutoAdvance() {
+  clearInterval(autoAdvanceInterval);
+}
+
+function resetAutoAdvance() {
+  if (autoCheckbox.checked) {
+      startAutoAdvance();
+  } else {
+      stopAutoAdvance();
   }
-  
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
+}
+
+autoCheckbox.addEventListener('change', () => {
+  if (autoCheckbox.checked) {
+      startAutoAdvance();
+  } else {
+      stopAutoAdvance();
   }
-  
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
+});
+
+let countdown = 4; 
+setInterval(() => {
+  if (autoCheckbox.checked) {
+      timerDisplay.textContent = `Next slide in: ${countdown}s`;
+      countdown--;
+      if (countdown < 0) countdown = 4;
+  } else {
+      timerDisplay.textContent = 'Auto-advance off';
+      countdown = 4; 
   }
-  
-  function resetInterval() {
-    clearInterval(interval);
-    timerValue = 4;
-    updateTimer();
-    interval = setInterval(() => {
-      timerValue--;
-      updateTimer();
-      if (timerValue <= 0) {
-        nextImage();
-      }
-    }, 1000);
-  }
-  
-  function updateTimer() {
-    timerDisplay.textContent = `Timer: ${timerValue}`;
-  }
-  
-  // Attach events using JavaScript
-  document.getElementById('nextBtn').addEventListener('click', nextImage);
-  document.getElementById('prevBtn').addEventListener('click', prevImage);
-  
-  // Initialize
-  showImage(currentIndex);
+}, 1000);
+
+updateSlide();
