@@ -20,7 +20,7 @@ let autoAdvanceInterval;
 
 // DOM elements
 const slideshow = document.getElementById('carouselImage');
-const caption = document.getElementById('caption');
+const caption = document.getElementById('captions');
 const prevButton = document.getElementById('prevBtn');
 const nextButton = document.getElementById('nextBtn');
 const autoCheckbox = document.getElementById('autoAdvance');
@@ -30,7 +30,7 @@ const timerDisplay = document.getElementById('timer');
 function updateSlide() {
   slideshow.src = images[currentIndex];
   slideshow.alt = captions[currentIndex];
-  captions.textContent = captions[currentIndex];
+  caption.textContent = captions[currentIndex];
 }
 
 // Navigate slides
