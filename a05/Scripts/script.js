@@ -28,10 +28,11 @@ const timerDisplay = document.getElementById('timer');
 
 // Update displayed image and caption
 function updateSlide() {
-  slideshow.src = images[currentIndex];
-  slideshow.alt = captions[currentIndex];
-  caption.textContent = captions[currentIndex];
+  document.getElementById("carouselImage").src = images[currentIndex];
+  document.getElementById("carouselImage").alt = captions[currentIndex];
+  document.getElementById("captions").textContent = captions[currentIndex];
 }
+
 
 // Navigate slides
 function nextSlide() {
